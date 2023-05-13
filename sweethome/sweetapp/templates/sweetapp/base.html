@@ -1,0 +1,94 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<div class="title">
+		<title class="title">{{title}}</title>
+	</div>
+
+	<link type="text/css" href="{% static 'sweetapp/css/style.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
+
+			{% if request.user.is_authenticated %}
+			<li class="last">{{user.username}} | <a href="{% url 'home' %}">Выйти</a></li>
+			{% else %}
+			<li class="last"><a href="{% url 'home' %}">Регистрация</a> | <a href="{% url 'home' %}">Войти</a></li>
+			{% endif %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="blockmenu">
+			{% for m in menu %}
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+			{% endfor %}
+		</div>
+
+{% endblock mainmenu %}
+
+
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+
+
+<td valign="top" class="content">
+
+	{% block breadcrumbs %}
+	{% endblock %}
+
+
+	<div class="content-text">
+{% block content %}
+
+{% endblock %}
+{% if page_obj.has_other_pages %}
+<nav class="list-pages">
+	<ul>
+		{% if page_obj.has_previous %}
+		<li class="page-num">
+			<a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+		</li>
+		{% endif %}
+		{% for p in paginator.page_range %}
+		{% if page_obj.number == p %}
+		<li class="page-num page-num-selected">{{ p }}</li>
+		{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+		<li class="page-num">
+			<a href="?page={{ p }}">{{ p }}</a>
+		</li>
+		{% endif %}
+
+		{% endfor %}
+		{% if page_obj.has_next %}
+		<li class="page-num">
+			<a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+		</li>
+		{% endif %}
+	</ul>
+{% endif %}
+</nav>
+	</div>
+</td></tr></table>
+</td></tr>
+</td></tr></table>
+</body>
+<footer>
+	<div id="footer">
+		<p></p>
+	</div>
+</footer>
+</html>
