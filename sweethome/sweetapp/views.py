@@ -29,7 +29,9 @@ class SweetHome(TemplateView):
         context = super(SweetHome, self).get_context_data(*args, **kwargs)
         context['title'] = "Главная страница"
         context['menu'] = menu
-        context['news'] = News.objects.all()
+        context['news'] = News.objects.all()[0:3]
+        context['specialists'] = Specialist.objects.all()[0:3]
+        context['companies'] = Company.objects.all()[0:3]
         return context
 
 
@@ -41,6 +43,7 @@ class ShowNews(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['title'] = context['news']
         context['menu'] = menu
         return context

@@ -87,11 +87,13 @@ ul.list-articles li {
 
 
 	background-color: #fff;
-	height: 100px;
+	height: 60px;
 }
 .blockmenu{
     display: flex;
-    background-color: #fff;
+    text-align: center;
+    padding-top: 30px;
+    background-color: #e6e6e6;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
     justify: center;
     justify-content: space-around;
@@ -526,6 +528,7 @@ li {
   text-align: right;
 }
 #news-block {
+   border-radius: 10px;
    margin: 0 auto;
    width: 100%; /* заменяем на процентную ширину */
    max-width: 800px;
@@ -584,4 +587,19 @@ li {
 
 .button.right {
    float: right;
+}
+.spec-container{
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+.spec-container div{
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    background: white;
+    box-shadow: 2px 2px 8px 8px rgba(34, 60, 80, 0.2);
+    padding: 20px;
+    margin: 20px;
 }

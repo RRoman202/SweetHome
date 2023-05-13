@@ -65,4 +65,29 @@
     {% endfor %}
   </div>
  </div>
+<div class="spec-container">
+    {% for s in specialists %}
+    <div>
+        {% if s.photo %}
+        <img class="img-article-left thumb" src="{{s.photo.url}}">
+        {% endif %}
+        <h3>{{s.name}}</h3>
+        <p>{{s.count_service}}</p>
+    </div>
+    {% endfor %}
+
+</div>
+<button>Все специалисты</button>
+<div class="spec-container">
+    {% for c in companies %}
+    <div>
+        {% if c.photo %}
+        <img class="img-article-left thumb" src="{{c.photo.url}}">
+        {% endif %}
+        <h3>{{c.title}}</h3>
+    </div>
+    {% endfor %}
+
+</div>
+<button>Все агентства</button>
 {% endblock %}
