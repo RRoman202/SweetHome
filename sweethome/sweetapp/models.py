@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from django.template.backends import django
 from django.urls import reverse
 # Create your models here.
 
@@ -68,3 +71,40 @@ class Company(models.Model):
 
     def get_absolute_url(self):
         return reverse('company', kwargs={'comapny_slug': self.slug})
+
+class Offer(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    description = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('offer', kwargs={'offer_slug': self.slug})
+
+class Review(models.Model):
+    name = models.CharField(max_length=255)
+    date = models.DateTimeField()
+    content = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('review', kwargs={'review_slug': self.slug})
+
+class Newbuilding(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    typehome = models.CharField(max_length=255)
+    square = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
+    number = models.CharField(max_length=255)
+
+class Rent(models.Model):
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    square = models.IntegerField(default=0)
+    room = models.IntegerField(default=0)
+    content = models.TextField(blank=True)
+    address = models.CharField(max_length=255)
+    price = models.IntegerField(default=0)
+
+
+

@@ -8,13 +8,14 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
+from .forms import *
 from .models import *
 from .utils import *
 
 menu = [{'title': "Главная", 'url_name': 'home'},
-        {'title': "Аренда", 'url_name': 'home'},
+        {'title': "Аренда", 'url_name': 'rent'},
         {'title': "Продажа", 'url_name': 'home'},
-        {'title': "Новостройки", 'url_name': 'home'},
+        {'title': "Новостройки", 'url_name': 'newbuilding'},
         {'title': "Ипотека", 'url_name': 'home'},
 
 ]
@@ -32,6 +33,8 @@ class SweetHome(TemplateView):
         context['news'] = News.objects.all()[0:3]
         context['specialists'] = Specialist.objects.all()[0:3]
         context['companies'] = Company.objects.all()[0:3]
+        context['offers'] = Offer.objects.all()[0:4]
+        context['reviews'] = Review.objects.all()[0:5]
         return context
 
 
@@ -47,3 +50,72 @@ class ShowNews(DetailView):
         context['title'] = context['news']
         context['menu'] = menu
         return context
+
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'sweetapp/register.html'
+    success_url = reverse_lazy('login')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Регистрация'
+        context['menu'] = menu
+        return context
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'sweetapp/login.html'
+
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Авторизация'
+        context['menu'] = menu
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+class NewBuildingKatalog(ListView):
+    paginate_by = 3
+    model = Newbuilding
+    template_name = 'sweetapp/newbuilding.html'
+    context_object_name = 'buildings'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Новостройки'
+        context['menu'] = menu
+        return context
+
+class PersonView(TemplateView):
+    template_name = 'sweetapp/person.html'
+
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Личный кабинет'
+        context['menu'] = menu
+        return context
+
+class RentView(ListView):
+    paginate_by = 3
+    model = Rent
+    template_name = 'sweetapp/rent.html'
+    context_object_name = 'rents'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Аренда'
+        context['menu'] = menu
+        return context
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')

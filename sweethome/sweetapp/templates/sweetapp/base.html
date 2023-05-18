@@ -26,9 +26,9 @@
 			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
 
 			{% if request.user.is_authenticated %}
-			<li class="last">{{user.username}} | <a href="{% url 'home' %}">Выйти</a></li>
+			<li class="last"><a href="{% url 'person' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a></li>
 			{% else %}
-			<li class="last"><a href="{% url 'home' %}">Регистрация</a> | <a href="{% url 'home' %}">Войти</a></li>
+			<li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
 			{% endif %}
 			</ul>
 			<div class="clear"></div>
@@ -85,10 +85,44 @@
 </td></tr></table>
 </td></tr>
 </td></tr></table>
+
+
 </body>
 <footer>
-	<div id="footer">
-		<p></p>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="logofooter"></div>
+      </div>
+      <div class="col-md-3">
+        <h4>Контакты</h4>
+        <p>Электронная почта: info@company.com</p>
+        <p>Телефон: +7 (123) 456-78-90</p>
+      </div>
+      <div class="col-md-3">
+        <h4>Меню</h4>
+        <ul>
+          <li><a href="#">О нас</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Партнерская компания</a></li>
+          <li><a href="#">Вопрос-ответ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>Мы в соцсетях</h4>
+        <ul class="social-links">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+        <div class="app-links">
+          <a href="#"><img src="app-store.png" alt="ссылка на App Store"></a>
+          <a href="#"><img src="google-play.png" alt="ссылка на Google Play"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
+
 </html>

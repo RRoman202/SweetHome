@@ -48,10 +48,14 @@
     </div>
   </form>
   <div class="map-view">
-    <button class="btn btn-secondary">Показать на карте</button>
+    <button class="btn btn-primary">Показать на карте</button>
   </div>
 </div>
+<div class="title-center">
+    <h3>Последние новости</h3>
+</div>
 <div id="news-block">
+
   <div id="news-items">
    {% for n in news %}
    {% if n.photo %}
@@ -64,7 +68,10 @@
    </div>
     {% endfor %}
   </div>
- </div>
+</div>
+<div class="title-center">
+    <h3>Специалисты</h3>
+</div>
 <div class="spec-container">
     {% for s in specialists %}
     <div>
@@ -72,12 +79,19 @@
         <img class="img-article-left thumb" src="{{s.photo.url}}">
         {% endif %}
         <h3>{{s.name}}</h3>
-        <p>{{s.count_service}}</p>
+        <li>
+            <p>{{s.count_service}}</p>
+            <p>выполненных услуг</p>
+        </li>
+
     </div>
     {% endfor %}
 
 </div>
-<button>Все специалисты</button>
+<button class="btn-center">Все специалисты</button>
+<div class="title-center">
+    <h3>Агентства</h3>
+</div>
 <div class="spec-container">
     {% for c in companies %}
     <div>
@@ -89,5 +103,35 @@
     {% endfor %}
 
 </div>
-<button>Все агентства</button>
+<button class="btn-center">Все агентства</button>
+<div class="title-center">
+    <h3>Спецпредложения</h3>
+</div>
+<div class="container">
+  {% for o in offers %}
+  <div class="offer">
+      {% if o.photo %}
+        <img src="{{o.photo.url}}" alt="Offer 1">
+      {% endif %}
+      <h3>{{ o.title }}</h3>
+      <p>{{ o.description }}</p>
+      <a href="#">Подробнее</a>
+  </div>
+  {% endfor %}
+</div>
+<div class="title-center">
+    <h3>Отзывы</h3>
+</div>
+<div id="news-block">
+  <div id="news-items">
+   {% for r in reviews %}
+   <div class="news-item">
+
+    <h2>{{ r.name }}</h2>
+    <p>{{ r.content | linebreaks | truncatewords:15 }}</p>
+    <p>{{ r.date }}</p>
+   </div>
+    {% endfor %}
+  </div>
+ </div>
 {% endblock %}
