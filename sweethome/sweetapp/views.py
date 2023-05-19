@@ -14,9 +14,9 @@ from .utils import *
 
 menu = [{'title': "Главная", 'url_name': 'home'},
         {'title': "Аренда", 'url_name': 'rent'},
-        {'title': "Продажа", 'url_name': 'home'},
+        {'title': "Продажа", 'url_name': 'kupit'},
         {'title': "Новостройки", 'url_name': 'newbuilding'},
-        {'title': "Ипотека", 'url_name': 'home'},
+        {'title': "Ипотека", 'url_name': 'calculator'},
 
 ]
 
@@ -51,8 +51,11 @@ class ShowNews(DetailView):
         context['menu'] = menu
         return context
 
+
+
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
+
     template_name = 'sweetapp/register.html'
     success_url = reverse_lazy('login')
 
@@ -60,10 +63,13 @@ class RegisterUser(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Регистрация'
         context['menu'] = menu
+
         return context
 
     def form_valid(self, form):
         user = form.save()
+
+
         login(self.request, user)
         return redirect('home')
 
@@ -114,6 +120,28 @@ class RentView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Аренда'
         context['menu'] = menu
+        return context
+
+class KupitKatalog(ListView):
+    paginate_by = 6
+    model = Estate
+    template_name = 'sweetapp/kupit.html'
+    context_object_name = 'estates'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Продажа'
+        context['menu'] = menu
+        return context
+
+class CalculatorView(TemplateView):
+    template_name = "sweetapp/calculator.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CalculatorView, self).get_context_data(*args, **kwargs)
+        context['title'] = "Ипотека"
+        context['menu'] = menu
+
         return context
 
 def logout_user(request):

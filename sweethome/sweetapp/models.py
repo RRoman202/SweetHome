@@ -1,9 +1,14 @@
 import datetime
 
+from django.conf import settings
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.template.backends import django
 from django.urls import reverse
 # Create your models here.
+
 
 class Agent(models.Model):
     title = models.CharField(max_length=255)
@@ -106,5 +111,11 @@ class Rent(models.Model):
     address = models.CharField(max_length=255)
     price = models.IntegerField(default=0)
 
+class Estate(models.Model):
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
+    time_create = models.DateTimeField(auto_now_add=True)
+    time_update = models.DateTimeField(auto_now=True)
+    description = models.TextField(blank=True, verbose_name="Описание")
+    is_published = models.BooleanField(default=True, verbose_name="Публикация")
 
 

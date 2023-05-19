@@ -24,7 +24,8 @@
 		<div class="header">
 			<ul id="mainmenu" class="mainmenu">
 			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
-
+			<input type="text" class="search-input" placeholder="Поиск">
+			<input type="submit" value="Поиск" class="search-button">
 			{% if request.user.is_authenticated %}
 			<li class="last"><a href="{% url 'person' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a></li>
 			{% else %}
@@ -86,7 +87,7 @@
 </td></tr>
 </td></tr></table>
 
-
+<script src="{% static 'sweetapp/js/script.js' %}"></script>
 </body>
 <footer>
   <div class="container">

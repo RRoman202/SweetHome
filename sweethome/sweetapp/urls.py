@@ -11,5 +11,7 @@ urlpatterns = [
     path('newbuildings/', NewBuildingKatalog.as_view(), name='newbuilding'),
     path('person/', PersonView.as_view(), name='person'),
     path('rent/', RentView.as_view(), name='rent'),
+    path('kupit/', KupitKatalog.as_view(), name='kupit'),
+    path('calculator/', CalculatorView.as_view(), name='calculator'),
 
 ]

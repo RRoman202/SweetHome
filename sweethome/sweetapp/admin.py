@@ -33,3 +33,5 @@ admin.site.register(Review)
 admin.site.register(Rent)
 
 admin.site.register(Newbuilding, NewbuildingAdmin)
+
+admin.site.register(Estate)

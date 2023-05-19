@@ -303,7 +303,7 @@ ul.content-table li a {
 ul.content-table li a:hover {color: #F0711C;}
 
 .content-text {
-	margin: 60px 0 0 30px;
+	margin: 30px 0 0 0px;
 	color: black;
 	font-size: 20px;
 	font-family: 'Montserrat', sans-serif;
@@ -729,24 +729,6 @@ footer ul li {
     height: 100%;
 
 }
-
-.buildings{
-    display: block;
-    margin: 0 auto;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    padding: 20px;
-    width: calc(66.66% - 10px);
-
-}
-.buildings img{
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    max-height: 300px
-}
 .title-center{
    border-radius: 10px;
    padding: 20px;
@@ -758,4 +740,339 @@ footer ul li {
    text-align: center;
    overflow: hidden;
    position: relative;
+}
+.container-newbuild {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+.card {
+   width: calc(33.33% - 20px);
+   margin-bottom: 20px;
+   background-color: #fff;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+   border-radius: 5px;
+   overflow: hidden;
+}
+.card img {
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+}
+.card .title {
+   font-size: 24px;
+   font-weight: bold;
+   margin: 10px;
+}
+.card .types {
+   margin: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   font-size: 16px;
+}
+.card .types span {
+   background-color: #007bff;
+   color: #fff;
+   padding: 5px 10px;
+   border-radius: 5px;
+   margin-right: 10px;
+}
+.card .area-price {
+   margin: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   font-size: 16px;
+}
+.card .area-price span {
+   margin-right: 10px;
+}
+.card .phone {
+   margin: 10px;
+   font-size: 16px;
+}
+.card .phone span {
+   font-weight: bold;
+   margin-right: 5px;
+}
+.card .btn {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: #fff;
+   border-radius: 5px;
+   text-decoration: none;
+   margin: 10px;
+   transition: all 0.3s ease-in-out;
+}
+.card .btn:hover {
+   background-color: #0056b3;
+   transform: translateY(-2px);
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+input[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.search-input{
+    margin-top: 10px
+}
+
+
+
+
+.container-ad {
+   width: 80%;
+   margin: 0 auto;
+   padding: 20px;
+}
+h1-ad {
+   text-align: center;
+   margin-bottom: 50px;
+}
+.ad {
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+   padding: 20px;
+   margin-bottom: 30px;
+}
+.ad img {
+   width: 100%;
+   height: auto;
+   margin-bottom: 20px;
+}
+.ad h2 {
+   margin-bottom: 10px;
+   font-size: 24px;
+}
+.ad p {
+   margin-bottom: 10px;
+   font-size: 16px;
+   line-height: 1.5;
+}
+.ad .address {
+   color: #888;
+   margin-bottom: 20px;
+}
+.ad .price {
+   font-size: 24px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+.ad button {
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: #fff;
+   border-radius: 5px;
+   border: none;
+   cursor: pointer;
+   font-size: 16px;
+   margin-right: 10px;
+   transition: all 0.3s ease-in-out;
+}
+  .ad button:hover {
+   background-color: #0056b3;
+   transform: translateY(-2px);
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+.sort {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.properties {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.property {
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+.property {
+    background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+   padding: 20px;
+   margin-bottom: 30px;
+}
+
+.property img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.property h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.property p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.calculator {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+#payment {
+  font-size: 24px;
+}
+.mortgage-programs {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.program-info {
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+.apply-button {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile{
+    padding: 20px;
+    background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+   padding: 20px;
+   margin-bottom: 30px;
+}
+.profile img{
+    margin-left: 80px;
+    margin-top: 20px;
+}
+button a{
+    color: black;
 }
