@@ -1061,7 +1061,8 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
 }
-.profile{
+
+.container-person{
     padding: 20px;
     background-color: #fff;
    border-radius: 5px;
@@ -1070,7 +1071,7 @@ button:hover {
    margin-bottom: 30px;
 }
 .profile img{
-    margin-left: 80px;
+    margin-left: 43%;
     margin-top: 20px;
 }
 button a{
