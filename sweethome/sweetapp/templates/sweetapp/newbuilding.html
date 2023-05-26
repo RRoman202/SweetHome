@@ -1,0 +1,63 @@
+{% extends 'sweetapp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<div class="container">
+  <div class="selectors">
+   <select name="type">
+    <option value="">Тип квартиры</option>
+    <option value="studio">Студия</option>
+    <option value="1">1 комната</option>
+    <option value="2">2 комнаты</option>
+    <option value="3">3 комнаты</option>
+    <option value="4">4 комнаты</option>
+    <option value="4+">4+ комнат</option>
+   </select>
+   <input type="date" name="date">
+   <input type="number" name="price_from" placeholder="Цена от">
+   <input type="number" name="price_to" placeholder="Цена до">
+   <select name="finish">
+    <option value="">Отделка</option>
+    <option value="rough">Черновая</option>
+    <option value="fine">Чистовая</option>
+    <option value="turnkey">Под ключ</option>
+   </select>
+   <select name="class">
+    <option value="">Класс жилья</option>
+    <option value="economy">Эконом и стандарт</option>
+    <option value="comfort">Комфорт</option>
+    <option value="comfort+">Комфорт +</option>
+    <option value="business">Бизнес</option>
+    <option value="elite">Элитный</option>
+   </select>
+   <button>Больше параметров</button>
+   <button>Смотреть на карте</button>
+   <button>Показать</button>
+  </div>
+ </div>
+{% for b in buildings %}
+<div class="container-newbuild">
+  <div class="card">
+    {% if b.photo %}
+    <img src="{{ b.photo.url }}" alt="">
+    {% endif %}
+   <div class="title">{{ b.title }}</div>
+   <div class="types">
+    <span>{{ b.typehome }}</span>
+   </div>
+   <div class="area-price">
+    <span>Площадь: <span>{{ b.square }}</span><span>м2</span></span>
+    <span>Цена: <span>{{ b.price }}</span><span>рублей</span></span>
+   </div>
+   <div class="phone">
+    <span>Телефон:</span> <p>{{ b.number }}</p>
+   </div>
+   <a href="#" class="btn">Позвоните мне</a>
+  </div>
+</div>
+
+
+
+
+{% endfor %}
+{% endblock %}

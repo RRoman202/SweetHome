@@ -1,0 +1,64 @@
+{% extends 'sweetapp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<form>
+  <div class="form-group">
+    <label for="city">Выберите город:</label>
+    <select id="city" name="city">
+      <option value="moscow">Москва</option>
+      <option value="spb">Санкт-Петербург</option>
+      <option value="ekb">Екатеринбург</option>
+      <option value="ufa">Уфа</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Название ЖК:</label>
+    <input type="text" id="name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="type">Тип недвижимости:</label>
+    <select id="type" name="type">
+      <option value="flat">Квартира</option>
+      <option value="room">Комната</option>
+      <option value="house">Дом</option>
+      <option value="land">Участок</option>
+      <option value="commercial">Коммерческая</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="rooms">Количество комнат:</label>
+    <input type="number" id="rooms" name="rooms" min="1" max="10">
+  </div>
+
+  <div class="form-group">
+    <label for="price-from">Цена от:</label>
+    <input type="number" id="price-from" name="price-from">
+  </div>
+
+  <div class="form-group">
+    <label for="price-to">Цена до:</label>
+    <input type="number" id="price-to" name="price-to">
+  </div>
+
+  <button type="submit">Показать на карте</button>
+  <button type="submit">Найти</button>
+</form>
+<div class="properties">
+  {% for e in estates %}
+  <div class="property">
+    {% if e.photo %}
+      <img src="{{e.photo.url}}" alt="Недвижимость">
+    {% endif %}
+    <p>{{ e.description | linebreaks | truncatewords:15 }}</p>
+    <p>Дата добавления: <span>{{ e.time_create }}</span></p>
+    <button>Подробнее</button>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

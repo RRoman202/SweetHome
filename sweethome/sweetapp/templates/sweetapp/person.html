@@ -1,0 +1,19 @@
+{% extends 'sweetapp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<div class="container-person">
+  <div class="profile">
+   <img src="https://via.placeholder.com/200" alt="Фото профиля">
+   <div>
+    <h2>{{user.username}}</h2>
+    <p>{{user.date_joined}}</p>
+    <p>Номер телефона: +7 (999) 123-45-67</p>
+    <p>{{user.email}}</p>
+   </div>
+  </div>
+  <button><a href="#" class="btn">Изменить</a></button>
+  <button><a href="{% url 'logout' %}" class="btn">Выход</a></button>
+ </div>
+
+{% endblock %}

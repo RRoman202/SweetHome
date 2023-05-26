@@ -1,0 +1,100 @@
+{% extends 'sweetapp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<div class="calculator">
+  <h2>Ипотечный калькулятор</h2>
+  <form>
+    <div class="form-group">
+      <label for="price">Стоимость недвижимости:</label>
+      <input type="number" id="price" name="price" min="0">
+    </div>
+
+    <div class="form-group">
+      <label for="deposit">Первоначальный взнос:</label>
+      <input type="number" id="deposit" name="deposit" min="0">
+    </div>
+
+    <div class="form-group">
+      <label for="term">Срок кредита, в годах:</label>
+      <input type="number" id="term" name="term" min="1" max="30">
+    </div>
+
+    <div class="form-group">
+      <label for="rate">Ставка по ипотеке:</label>
+      <input type="number" id="rate" name="rate" min="0" max="100" step="0.01">
+    </div>
+
+    <button type="button" onclick="calculate()">Рассчитать</button>
+  </form>
+
+  <div class="result">
+    <h3>Ежемесячный платеж:</h3>
+    <p id="payment"></p>
+  </div>
+</div>
+<div class="mortgage-programs">
+  <h2>Ипотечные программы</h2>
+
+  <div class="form-group">
+    <label for="city">Город:</label>
+    <select id="city" name="city">
+      <option value="moscow">Москва</option>
+      <option value="spb">Санкт-Петербург</option>
+      <option value="ekaterinburg">Екатеринбург</option>
+      <option value="novosibirsk">Новосибирск</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="property-type">Тип недвижимости:</label>
+    <select id="property-type" name="property-type">
+      <option value="secondary">Квартира во вторичке</option>
+      <option value="room">Комната</option>
+      <option value="house">Дом</option>
+      <option value="land">Участок</option>
+      <option value="commercial">Коммерческая</option>
+    </select>
+  </div>
+
+  <div class="program-info">
+    <h3>Программа "Ипотека на готовое жилье"</h3>
+    <p><strong>Банк:</strong> Сбербанк</p>
+    <p><strong>Минимальная ставка:</strong> 6%</p>
+    <p><strong>Максимальная сумма:</strong> 30 млн. руб.</p>
+    <p><strong>Минимальный взнос в процентах:</strong> 15%</p>
+
+    <p><strong>Рассмотрение заявки:</strong> 7-14 дней</p>
+    <button class="income-confirmation">Подтверждение дохода</button>
+    <button class="apply-button">Оформить заявку</button>
+
+  </div>
+
+  <div class="program-info">
+    <h3>Программа "Молодая семья"</h3>
+    <p><strong>Банк:</strong> ВТБ</p>
+    <p><strong>Минимальная ставка:</strong> 5.5%</p>
+    <p><strong>Максимальная сумма:</strong> 12 млн. руб.</p>
+    <p><strong>Минимальный взнос в процентах:</strong> 10%</p>
+
+    <p><strong>Рассмотрение заявки:</strong> 5-10 дней</p>
+    <button class="income-confirmation">Подтверждение дохода</button>
+    <button class="apply-button">Оформить заявку</button>
+  </div>
+
+  <div class="program-info">
+    <h3>Программа "Жилье для молодых"</h3>
+    <p><strong>Банк:</strong> Газпромбанк</p>
+    <p><strong>Минимальная ставка:</strong> 6.5%</p>
+    <p><strong>Максимальная сумма:</strong> 15 млн. руб.</p>
+    <p><strong>Минимальный взнос в процентах:</strong> 10%</p>
+
+    <p><strong>Рассмотрение заявки:</strong> 10-15 дней</p>
+    <button class="income-confirmation">Подтверждение дохода</button>
+    <button class="apply-button">Оформить заявку</button>
+  </div>
+
+
+</div>
+
+{% endblock %}

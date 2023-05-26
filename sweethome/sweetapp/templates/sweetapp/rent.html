@@ -1,0 +1,43 @@
+{% extends 'sweetapp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<div class="filter">
+  <button class="btn active" data-filter="all">Все</button>
+  <button class="btn" data-filter="secondary">Вторичное жилье</button>
+  <button class="btn" data-filter="notfirst">Не первый этаж</button>
+  <button class="btn" data-filter="furnished">С мебелью</button>
+  <button class="btn" data-filter="other">Другое</button>
+</div>
+<div class="sort">
+  <label for="sort-select">Сортировка:</label>
+  <select id="sort-select">
+    <option value="relevant">По актуальности</option>
+    <option value="newest">Новые предложения</option>
+    <option value="price-asc">Цена по возрастанию</option>
+    <option value="price-desc">Цена по убыванию</option>
+    <option value="area-asc">Площадь по возрастанию</option>
+    <option value="area-desc">Площадь по убыванию</option>
+  </select>
+</div>
+{% for b in rents %}
+
+
+<div class="container-ad">
+  <div class="ad">
+   {% if b.photo %}
+    <img src="{{ b.photo.url }}">
+    {% endif %}
+   <p>Площадь: <span>{{ b.square }}</span> кв.м.</p>
+   <p>Количество комнат: <span>{{ b.room }}</span></p>
+   <p class="address">Адрес: <span>{{ b.address }}</span></p>
+   <p>Описание: <span>{{ b.content }}</span></p>
+   <p class="price">Цена: <span>{{ b.price }}</span> руб.</p>
+   <button>Показать телефон</button>
+   <button>В избранное</button>
+  </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}
